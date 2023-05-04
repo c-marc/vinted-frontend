@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import logo from "../assets/img/logo.png";
-import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 
-const Header = ({ isAuthenticated, setIsAuthenticated }) => {
+const Header = ({ isAuthenticated, logout }) => {
   const navigate = useNavigate();
 
   return (
@@ -28,9 +26,8 @@ const Header = ({ isAuthenticated, setIsAuthenticated }) => {
             <button
               className="btn-fill secondary"
               onClick={() => {
-                setIsAuthenticated(false);
-                Cookies.remove("token");
-                navigate("/");
+                logout();
+                navigate("");
               }}
             >
               Se déconnecter

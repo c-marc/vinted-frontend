@@ -7,6 +7,7 @@
 :root {
   --container-width: 1280px;
   --color-primary: #2aaeb7;
+  --color-secondary: #c2175b;
 }
 
 body {
@@ -32,6 +33,12 @@ button {
 button.btn-fill {
   color: white;
   background-color: var(--color-primary);
+}
+
+button.btn-fill.secondary {
+  color: white;
+  border: 1px solid var(--color-secondary);
+  background-color: var(--color-secondary);
 }
 
 .container {
