@@ -85,6 +85,7 @@ header nav button:last-of-type {
 
 /* -- HERO -- */
 .hero {
+  margin-bottom: 15px;
   background-image: url("./assets/img/banner-hero.jpg");
   background-size: cover;
   height: 450px;
