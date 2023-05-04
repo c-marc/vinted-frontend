@@ -1,45 +1,40 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { useState, useEffect } from "react";
-
 import "./App.css";
 
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
-import fetchOffers from "./services/vintedAPI";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Cookies from "js-cookie";
+import { useState } from "react";
 
 function App() {
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const fetchData = async () => {
-    try {
-      const data = await fetchOffers();
-      setData(data);
-      setIsLoading(false);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    Boolean(Cookies.get("token"))
+  );
 
   return (
     <div className="app">
       <Router>
-        <Header></Header>
+        <Header
+          isAuthenticated={isAuthenticated}
+          setIsAuthenticated={setIsAuthenticated}
+        ></Header>
 
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <Routes>
-            <Route path="/" element={<Home offers={data.offers} />} />
-            <Route path="/offer/:id" element={<Offer offers={data.offers} />} />
-          </Routes>
-        )}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/offer/:id" element={<Offer />} />
+          <Route
+            path="/signup"
+            element={<Signup setIsAuthenticated={setIsAuthenticated} />}
+          />
+          <Route
+            path="/login"
+            element={<Login setIsAuthenticated={setIsAuthenticated} />}
+          />
+        </Routes>
       </Router>
     </div>
   );

@@ -1,32 +1,29 @@
 import { Link } from "react-router-dom";
+import User from "./User";
 
-const Product = ({ offer }) => {
-  let marque = "";
-  let taille = "";
-  offer.product_details.forEach((el) => {
+const Product = ({ offerData }) => {
+  let marque = null;
+  let taille = null;
+  offerData.product_details.forEach((el) => {
     if (el.MARQUE) marque = el.MARQUE;
     if (el.TAILLE) taille = el.TAILLE;
   });
 
   return (
     <article className="product">
-      <Link to={`/offer/${offer._id}`}>
+      <Link to={`/offer/${offerData._id}`}>
         <div className="product-header">
-          <img
-            src={offer.owner?.account?.avatar?.secure_url}
-            alt="TODO alt_avatar"
-          />
-          <p>{offer.owner.account.username}</p>
+          <User user={offerData.owner} />
         </div>
         <img
           className="product-img"
-          src={offer.product_image.secure_url}
+          src={offerData.product_image.secure_url}
           alt="TODO alt_product"
         />
         <div className="product-footer">
-          <p className="price">{offer.product_price} €</p>
-          <p>{taille}</p>
-          <p>{marque}</p>
+          <p className="price">{offerData.product_price} €</p>
+          {taille && <p>{taille}</p>}
+          {marque && <p>{marque}</p>}
         </div>
       </Link>
     </article>

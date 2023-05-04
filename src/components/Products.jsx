@@ -1,10 +1,10 @@
 import Product from "./Product";
 
-const Products = ({ offers }) => {
+const Products = ({ offersData }) => {
   return (
     <div className="products container">
-      {offers.map((offer) => {
-        return <Product key={offer._id} offer={offer} />;
+      {offersData.map((offerData) => {
+        return <Product key={offerData._id} offerData={offerData} />;
       })}
     </div>
   );

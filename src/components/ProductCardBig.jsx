@@ -1,15 +1,16 @@
 import User from "./User";
 
-const ProductCardBig = ({ offer }) => {
-  const price = offer.product_price;
-  let details = offer.product_details.map((detail) => {
+const ProductCardBig = ({ offerData }) => {
+  const price = offerData.product_price;
+
+  let details = offerData.product_details.map((detail) => {
     const [key, value] = Object.entries(detail)[0];
     return { key, value };
   });
   details = details.filter((d) => !/paiement/i.test(d.key));
 
-  const name = offer.product_name;
-  const description = offer.product_description;
+  const name = offerData.product_name;
+  const description = offerData.product_description;
 
   return (
     <div className="product-card-big">
@@ -33,7 +34,7 @@ const ProductCardBig = ({ offer }) => {
       <section className="content-bottom">
         <p className="name">{name}</p>
         <p className="description">{description}</p>
-        <User user={offer.owner} />
+        <User user={offerData.owner} />
       </section>
 
       <button className="btn-fill">Acheter</button>

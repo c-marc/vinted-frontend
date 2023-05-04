@@ -137,10 +137,8 @@ header nav button:last-of-type {
   gap: 10px;
 }
 
-.product-header img {
-  width: 30px;
-  aspect-ratio: 1;
-  border-radius: 50%;
+.product-header .user {
+  height: 40px;
 }
 
 .product-img {
