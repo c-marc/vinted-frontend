@@ -13,12 +13,12 @@ const Header = ({ isAuthenticated, setIsAuthenticated }) => {
         <Link to="/">
           <img src={logo} alt="Vinted" />
         </Link>
-        <input type="search" placeholder="Recherche des articles" />
+        <input type="search" placeholder="Rechercher des articles" />
         <nav>
           {!isAuthenticated ? (
             <>
               <Link to="/signup">
-                <button>S inscrire </button>
+                <button>S'inscrire </button>
               </Link>
               <Link to="/login">
                 <button>Se connecter</button>

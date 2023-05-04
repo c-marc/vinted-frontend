@@ -79,7 +79,7 @@ const SignUp = ({ setIsAuthenticated }) => {
         <label htmlFor="newsletter">S inscrire à notre newletter</label>
 
         <button type="submit" className="btn-fill">
-          S inscire
+          S'inscire
         </button>
       </form>
 
