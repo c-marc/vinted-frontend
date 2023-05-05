@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import logo from "../assets/img/logo.png";
 
-const Header = ({ isAuthenticated, logout }) => {
+const Header = ({ isAuthenticated, handleToken }) => {
   const navigate = useNavigate();
 
   return (
@@ -26,8 +26,8 @@ const Header = ({ isAuthenticated, logout }) => {
             <button
               className="btn-fill secondary"
               onClick={() => {
-                logout();
-                navigate("");
+                handleToken(null);
+                navigate("/");
               }}
             >
               Se déconnecter
