@@ -11,8 +11,8 @@
   --color-primary: #2aaeb7;
   --color-secondary: #c2175b;
   --color-grey-bg: #eaedee;
-  --color-grey-input: #f5f6f7;
-
+  --color-grey-bg-search: #f5f6f7;
+  --color-grey-font: #999999;
   --border-radius: 8px;
 }
 
