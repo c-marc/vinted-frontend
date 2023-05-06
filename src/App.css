@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/maison-neue");
+
 *,
 ::before,
 ::after {
@@ -8,11 +10,15 @@
   --container-width: 1280px;
   --color-primary: #2aaeb7;
   --color-secondary: #c2175b;
+  --color-grey-bg: #eaedee;
+  --color-grey-input: #f5f6f7;
+
   --border-radius: 8px;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Maison Neue", sans-serif;
+  font-weight: 300;
 }
 
 h2 {

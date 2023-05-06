@@ -3,19 +3,41 @@ import axios from "axios";
 
 import Hero from "../components/Hero";
 import Products from "../components/Products";
+import { getPageMax, urlWithFilters } from "../utils/utils";
+import Filters from "../components/Filters";
 
-const Home = () => {
+const Home = ({ search, setSearch }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
+  const [filters, setFilters] = useState({
+    priceMin: null,
+    priceMax: null,
+    sort: "price-asc", //null,
+    page: null,
+    limit: null,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const URL = "https://lereacteur-vinted-api.herokuapp.com/offers";
-        const result = await axios.get(URL);
+        const URLwithQuery = urlWithFilters(URL, { ...filters, title: search });
+        // console.log(URLwithQuery);
+        const result = await axios.get(URLwithQuery);
         if (!ignore) {
           setData(result.data);
           setIsLoading(false);
+
+          // Refetch can make the page invalid
+          // This will trigger a new fetch
+          if (filters.page) {
+            const pageMax = getPageMax(filters.limit, result.data.count);
+            console.log(pageMax);
+            if (filters.page > pageMax) {
+              setFilters({ ...filters, page: pageMax });
+            }
+          }
         }
       } catch (error) {
         console.error(error.message);
@@ -27,12 +49,18 @@ const Home = () => {
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [filters, search]);
 
   // console.log(data);
   return (
     <div className="home">
       <Hero />
+      <Filters
+        filters={filters}
+        setFilters={setFilters}
+        count={data.count || 0}
+        setSearch={setSearch}
+      ></Filters>
       {isLoading ? <p>Loading...</p> : <Products offersData={data.offers} />}
     </div>
   );

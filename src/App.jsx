@@ -1,4 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 import "./App.css";
 
@@ -7,40 +10,50 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Cookies from "js-cookie";
-import { useState } from "react";
+import OfferAdd from "./pages/OfferAdd";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    Boolean(Cookies.get("token"))
-  );
+  const [token, setToken] = useState(Cookies.get("tokenVinted"));
 
   const handleToken = (token) => {
     if (token) {
-      Cookies.set("token", token, { expires: 2 });
-      setIsAuthenticated(true);
+      Cookies.set("tokenVinted", token, { expires: 7 });
+      setToken(token);
     } else {
-      Cookies.remove("token");
-      setIsAuthenticated(false);
+      Cookies.remove("tokenVinted");
+      setToken(null);
     }
   };
+
+  const [search, setSearch] = useState("");
 
   return (
     <div className="app">
       <Router>
         <Header
-          isAuthenticated={isAuthenticated}
+          token={token}
           handleToken={handleToken}
+          search={search}
+          setSearch={setSearch}
         ></Header>
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home search={search} setSearch={setSearch} />}
+          />
           <Route path="/offer/:id" element={<Offer />} />
           <Route
             path="/signup"
             element={<Signup handleToken={handleToken} />}
           />
           <Route path="/login" element={<Login handleToken={handleToken} />} />
+          <Route
+            path="/offer/publish"
+            element={
+              token ? <OfferAdd token={token} /> : <Navigate to="/login" />
+            }
+          />
         </Routes>
       </Router>
     </div>
