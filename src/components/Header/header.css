@@ -19,3 +19,19 @@ header nav .nav-group {
   display: flex;
   gap: 10px;
 }
+
+@media (max-width: 900px) {
+  header {
+    height: auto;
+  }
+
+  header {
+    gap: 15px;
+  }
+
+  header nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+}
