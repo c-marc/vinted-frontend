@@ -21,12 +21,12 @@ const PageNav = ({ page, limit, count, setPage }) => {
     <div className="page-nav-container">
       <ChevronLeftIcon
         onClick={() => setPage(page - 1)}
-        disabled={!page || page === 1}
+        className={!page || page === 1 ? "inactive" : ""}
       />
       <input type="number" value={page || 1} onChange={handlePageChange} />
       <ChevronRightIcon
         onClick={() => setPage(page + 1)}
-        disabled={!page || page === pageMax}
+        className={!page || page === pageMax ? "inactive" : ""}
       />
     </div>
   );

@@ -9,6 +9,10 @@
   text-align: center;
 }
 
-.page-nav-container svg:hover {
+.page-nav-container svg:not(.incative):hover {
   color: black;
+}
+
+.page-nav-container svg.inactive {
+  visibility: hidden;
 }
