@@ -1,0 +1,16 @@
+.filters-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filters-container .group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filters-container .double-slider-container {
+  font-size: 0.85rem;
+}

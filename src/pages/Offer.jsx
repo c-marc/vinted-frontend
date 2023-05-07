@@ -32,16 +32,18 @@ const Offer = () => {
 
   console.log(data);
   return (
-    <>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <div className="offer">
-          <img src={data.product_image.secure_url} alt="TODO"></img>
-          <ProductCardBig offerData={data} />
-        </div>
-      )}
-    </>
+    <main className="offer-container">
+      <div className="container">
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <img src={data.product_image.secure_url} alt="TODO"></img>
+            <ProductCardBig data={data} />
+          </>
+        )}
+      </div>
+    </main>
   );
 };
 

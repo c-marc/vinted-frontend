@@ -1,0 +1,32 @@
+.hero-container {
+  background-image: url("../../assets/img/banner-hero.jpg");
+  background-size: cover;
+  height: 450px;
+  position: relative;
+}
+
+.hero-card {
+  position: absolute;
+  top: 75px;
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid lightgrey;
+  height: 270px;
+  width: 410px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+}
+
+.hero-card h1 {
+  font-size: 2rem;
+  line-height: 1.4em;
+}
+
+.hero-card button {
+  font-family: Aial, sans-serif;
+  font-size: 1.1rem;
+  padding: 0.8em 1em;
+}

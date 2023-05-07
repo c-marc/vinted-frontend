@@ -1,6 +1,8 @@
+import "./user.css";
+
 const User = ({ user }) => {
   return (
-    <div className="user">
+    <div className="user-container">
       <div className="avatar">
         {user.account.avatar?.secure_url && (
           <img src={user.account.avatar.secure_url} alt="TODO_avatar" />

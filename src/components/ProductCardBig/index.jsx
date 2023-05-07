@@ -1,19 +1,21 @@
-import User from "./User";
+import User from "../User";
 
-const ProductCardBig = ({ offerData }) => {
-  const price = offerData.product_price;
+import "./productCardBig.css";
 
-  let details = offerData.product_details.map((detail) => {
+const ProductCardBig = ({ data }) => {
+  const price = data.product_price;
+
+  let details = data.product_details.map((detail) => {
     const [key, value] = Object.entries(detail)[0];
     return { key, value };
   });
   details = details.filter((d) => !/paiement/i.test(d.key));
 
-  const name = offerData.product_name;
-  const description = offerData.product_description;
+  const name = data.product_name;
+  const description = data.product_description;
 
   return (
-    <div className="product-card-big">
+    <div className="product-card-big-container">
       <section className="content-top">
         <p className="price">{price} €</p>
 
@@ -34,10 +36,10 @@ const ProductCardBig = ({ offerData }) => {
       <section className="content-bottom">
         <p className="name">{name}</p>
         <p className="description">{description}</p>
-        <User user={offerData.owner} />
+        <User user={data.owner} />
       </section>
 
-      <button className="btn-fill">Acheter</button>
+      <button className="btn btn-primary">Acheter</button>
     </div>
   );
 };

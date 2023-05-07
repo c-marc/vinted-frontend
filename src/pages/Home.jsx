@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import Hero from "../components/Hero";
-import Products from "../components/Products";
+import ProductList from "../components/ProductList";
 import { getPageMax, urlWithFilters } from "../utils/utils";
 import Filters from "../components/Filters";
 
@@ -53,16 +53,18 @@ const Home = ({ search, setSearch }) => {
 
   // console.log(data);
   return (
-    <div className="home">
+    <main>
       <Hero />
-      <Filters
-        filters={filters}
-        setFilters={setFilters}
-        count={data.count || 0}
-        setSearch={setSearch}
-      ></Filters>
-      {isLoading ? <p>Loading...</p> : <Products offersData={data.offers} />}
-    </div>
+      <div className="container">
+        <Filters
+          filters={filters}
+          setFilters={setFilters}
+          count={data.count || 0}
+          setSearch={setSearch}
+        ></Filters>
+        {isLoading ? <p>Loading...</p> : <ProductList data={data.offers} />}
+      </div>
+    </main>
   );
 };
 

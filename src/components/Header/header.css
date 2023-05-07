@@ -1,0 +1,21 @@
+header {
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+
+header .search-bar-container {
+  flex: 2;
+}
+
+header nav {
+  display: flex;
+  gap: 60px;
+}
+
+header nav .nav-group {
+  display: flex;
+  gap: 10px;
+}

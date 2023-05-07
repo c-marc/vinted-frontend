@@ -1,3 +1,5 @@
+import "./doubleSlider.css";
+
 const DoubleSlider = ({ min, max, setMinAndMax }) => {
   // Upper bound, could be a prop for a more generalizable component
   const MAX_LIMIT = 200;
@@ -19,7 +21,7 @@ const DoubleSlider = ({ min, max, setMinAndMax }) => {
   };
 
   return (
-    <div className="double-slider">
+    <div className="double-slider-container">
       <div className="slider">
         <label htmlFor="min">Prix min</label>
         <input

@@ -10,7 +10,7 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import OfferAdd from "./pages/OfferAdd";
+import Publish from "./pages/Publish";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("tokenVinted"));
@@ -51,7 +51,7 @@ function App() {
           <Route
             path="/offer/publish"
             element={
-              token ? <OfferAdd token={token} /> : <Navigate to="/login" />
+              token ? <Publish token={token} /> : <Navigate to="/login" />
             }
           />
         </Routes>

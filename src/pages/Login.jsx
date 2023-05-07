@@ -44,8 +44,8 @@ const Login = ({ handleToken }) => {
   };
 
   return (
-    <div className="login">
-      <h2>Se connecter</h2>
+    <div className="auth-form-container">
+      <h1>Se connecter</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -65,7 +65,7 @@ const Login = ({ handleToken }) => {
           required
         />
 
-        <button type="submit" className="btn-fill">
+        <button type="submit" className="btn btn-primary">
           Se connecter
         </button>
       </form>

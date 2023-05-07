@@ -1,0 +1,67 @@
+.form-publish-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-publish-container fieldset {
+  background-color: white;
+  border: 1px solid lightgrey;
+  width: 100%;
+}
+
+.form-publish-container fieldset > div:not(:last-child) {
+  border-bottom: 1px solid lightgrey;
+}
+
+.form-publish-container fieldset > div.columns {
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.form-publish-container fieldset > div.columns > :nth-child(2) {
+  width: 50%;
+}
+
+.form-publish-container .checkbox {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-publish-container .submit {
+  height: 60px;
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+}
+
+.form-publish-container :is(input, label) {
+  padding: 0.5em 0;
+  font-size: 1rem;
+}
+
+.form-publish-container fieldset:has(input[type="file"]) {
+  padding: 15px;
+}
+
+.form-publish-container :is(input, textarea) {
+  border-bottom: 1px solid grey;
+}
+
+.form-publish-container :is(input, textarea):focus-visible {
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.form-publish-container input[type="file"] {
+  height: 150px;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px dashed grey;
+}

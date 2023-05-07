@@ -1,4 +1,8 @@
-import { getPageMax } from "../utils/utils";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+
+import { getPageMax } from "../../utils/utils";
+
+import "./pageNav.css";
 
 const PageNav = ({ page, limit, count, setPage }) => {
   const pageMax = getPageMax(limit, count);
@@ -14,18 +18,16 @@ const PageNav = ({ page, limit, count, setPage }) => {
   };
 
   return (
-    <div className="page-nav">
-      <p>Page</p>
-      <button onClick={() => setPage(page - 1)} disabled={!page || page === 1}>
-        -
-      </button>
+    <div className="page-nav-container">
+      <ChevronLeftIcon
+        onClick={() => setPage(page - 1)}
+        disabled={!page || page === 1}
+      />
       <input type="number" value={page || 1} onChange={handlePageChange} />
-      <button
+      <ChevronRightIcon
         onClick={() => setPage(page + 1)}
         disabled={!page || page === pageMax}
-      >
-        +
-      </button>
+      />
     </div>
   );
 };

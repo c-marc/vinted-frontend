@@ -1,0 +1,14 @@
+.page-nav-container {
+  display: flex;
+  align-items: center;
+}
+
+.page-nav-container input {
+  border: 1px solid lightgrey;
+  width: 5ch;
+  text-align: center;
+}
+
+.page-nav-container svg:hover {
+  color: black;
+}

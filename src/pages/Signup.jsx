@@ -48,8 +48,8 @@ const SignUp = ({ handleToken }) => {
   };
 
   return (
-    <div className="signup">
-      <h2>S'inscrire</h2>
+    <div className="auth-form-container">
+      <h1>S'inscrire</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -89,10 +89,10 @@ const SignUp = ({ handleToken }) => {
             }
             required
           />
-          <label htmlFor="newsletter">S inscrire à notre newletter</label>
+          <label htmlFor="newsletter">S'inscrire à notre newletter</label>
         </div>
 
-        <button type="submit" className="btn-fill">
+        <button type="submit" className="btn btn-primary">
           S'inscire
         </button>
       </form>

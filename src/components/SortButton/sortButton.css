@@ -1,0 +1,10 @@
+.sort-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sort-button svg {
+  height: 15px;
+  color: black;
+}

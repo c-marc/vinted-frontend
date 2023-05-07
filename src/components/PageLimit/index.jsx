@@ -1,3 +1,5 @@
+import "./pageLimit.css";
+
 const PageLimit = ({ limit, setLimitAndPage }) => {
   const handleLimitChange = (event) => {
     const newLimit =
@@ -8,9 +10,8 @@ const PageLimit = ({ limit, setLimitAndPage }) => {
   const value = limit ? limit.toString() : "all";
 
   return (
-    <div className="pagination">
-      <label htmlFor="page-limit">Nb. par page:</label>
-      <select id="page-limit" value={value} onChange={handleLimitChange}>
+    <div className="page-limit-container">
+      <select value={value} onChange={handleLimitChange}>
         <option value="all">tout</option>
         <option value="5">5</option>
         <option value="10">10</option>

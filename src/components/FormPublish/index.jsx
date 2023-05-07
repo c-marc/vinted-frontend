@@ -1,8 +1,10 @@
 import { useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const OfferAdd = ({ token }) => {
+import "./formPublish.css";
+
+const FormPublish = ({ token }) => {
   const [formData, setFormData] = useState({
     title: "Costume 2 pièces",
     description: "Elégant. Parfait pour répondre aux issues.",
@@ -28,8 +30,8 @@ const OfferAdd = ({ token }) => {
     setErrorMessage("");
 
     try {
-      //console.log(formData);
-      console.log(fileInput.current.files[0]);
+      // console.log(formData);
+      // console.log(fileInput.current.files[0]);
 
       const result = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
@@ -41,19 +43,19 @@ const OfferAdd = ({ token }) => {
           },
         }
       );
-      console.log(result.data);
+      // console.log(result.data);
       navigate(`/offer/${result.data._id}`);
     } catch (error) {
-      console.error(error.message);
+      // console.error(error.message);
       console.error(error.response.data.message);
       if (error.response.status) {
-        setErrorMessage("TODO");
+        setErrorMessage("TODO: check API");
       }
     }
   };
 
   return (
-    <div className="offer-add">
+    <div className="form-publish-container">
       <h1>Vends ton article</h1>
 
       <form onSubmit={handleSubmit}>
@@ -68,7 +70,7 @@ const OfferAdd = ({ token }) => {
         </fieldset>
 
         <fieldset>
-          <div>
+          <div className="columns">
             <label htmlFor="title">Titre</label>
             <input
               id="title"
@@ -80,7 +82,7 @@ const OfferAdd = ({ token }) => {
               required
             />
           </div>
-          <div>
+          <div className="columns">
             <label htmlFor="description">Décris ton article</label>
             <textarea
               id="description"
@@ -96,7 +98,7 @@ const OfferAdd = ({ token }) => {
         </fieldset>
 
         <fieldset>
-          <div>
+          <div className="columns">
             <label htmlFor="brand">Marque</label>
             <input
               id="brand"
@@ -107,7 +109,7 @@ const OfferAdd = ({ token }) => {
               placeholder="ex: Zara"
             />
           </div>
-          <div>
+          <div className="columns">
             <label htmlFor="size">Taille</label>
             <input
               id="size"
@@ -118,7 +120,8 @@ const OfferAdd = ({ token }) => {
               placeholder="ex: L / 40 / 12"
             />
           </div>
-          <div>
+
+          <div className="columns">
             <label htmlFor="color">Couleur</label>
             <input
               id="color"
@@ -129,7 +132,8 @@ const OfferAdd = ({ token }) => {
               placeholder="ex: Fushia"
             />
           </div>
-          <div>
+
+          <div className="columns">
             <label htmlFor="condition">Etat</label>
             <input
               id="condition"
@@ -140,7 +144,8 @@ const OfferAdd = ({ token }) => {
               placeholder="ex: Neuf avec étiquette"
             />
           </div>
-          <div>
+
+          <div className="columns">
             <label htmlFor="city">Lieu</label>
             <input
               id="city"
@@ -154,40 +159,44 @@ const OfferAdd = ({ token }) => {
         </fieldset>
 
         <fieldset>
-          <div>
+          <div className="columns">
             <label htmlFor="price">Prix</label>
-            <input
-              id="price"
-              name="price"
-              type="number"
-              value={formData.price}
-              onChange={(e) =>
-                setFormData({ ...formData, price: e.target.valueAsNumber })
-              }
-              placeholder="ex: 0.00 €"
-              required
-            />
-          </div>
-
-          <div>
-            <div className="checkbox">
-              <label htmlFor="trade">Je suis intéressé par les échanges</label>
+            <div className="group">
               <input
-                id="trade"
-                name="trade"
-                type="checkbox"
-                checked={formData.trade}
-                onChange={() =>
-                  setFormData({ ...formData, trade: !formData.trade })
+                id="price"
+                name="price"
+                type="number"
+                value={formData.price}
+                onChange={(e) =>
+                  setFormData({ ...formData, price: e.target.valueAsNumber })
                 }
+                placeholder="ex: 0.00 €"
+                required
               />
+
+              <div className="checkbox">
+                <label htmlFor="trade">
+                  Je suis intéressé(e) par les échanges
+                </label>
+                <input
+                  id="trade"
+                  name="trade"
+                  type="checkbox"
+                  checked={formData.trade}
+                  onChange={() =>
+                    setFormData({ ...formData, trade: !formData.trade })
+                  }
+                />
+              </div>
             </div>
           </div>
         </fieldset>
 
-        <button type="submit" className="btn-fill">
-          Ajouter
-        </button>
+        <div className="submit">
+          <button type="submit" className="btn btn-primary">
+            Ajouter
+          </button>
+        </div>
       </form>
 
       {errorMessage && <p className="error">{errorMessage}</p>}
@@ -195,4 +204,4 @@ const OfferAdd = ({ token }) => {
   );
 };
 
-export default OfferAdd;
+export default FormPublish;
