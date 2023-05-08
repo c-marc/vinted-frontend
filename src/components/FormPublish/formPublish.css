@@ -73,7 +73,8 @@
 }
 
 .form-publish-container input[type="file"] {
-  /* display: none; */
+  display: none;
+  /* TODO: deal with a preview */
 }
 
 .form-publish-container label[for="file"] {

@@ -6,10 +6,16 @@ const ProductCardBig = ({ data }) => {
   const price = data.product_price;
 
   let details = data.product_details.map((detail) => {
+    // beware of empty objects sent by mischievous people
+    if (Object.keys(detail).length !== 1) {
+      return { key: null, value: null };
+    }
     const [key, value] = Object.entries(detail)[0];
     return { key, value };
   });
-  details = details.filter((d) => !/paiement/i.test(d.key));
+  details = details
+    .filter((d) => d.key)
+    .filter((d) => !/paiement/i.test(d.key));
 
   const name = data.product_name;
   const description = data.product_description;
