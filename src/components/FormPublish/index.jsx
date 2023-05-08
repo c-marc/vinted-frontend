@@ -4,19 +4,26 @@ import axios from "axios";
 
 import "./formPublish.css";
 
+// DEMO
+const seed_data = {
+  title: "Costume 2 pièces",
+  description: "Elégant. Parfait pour répondre aux issues.",
+  size: "L / 40",
+  color: "Rouge qui claque",
+  brand: "MARVEL",
+  city: "Paris Le Réacteur",
+  condition: "Propre",
+  price: 2,
+  trade: false,
+};
+
 const FormPublish = ({ token }) => {
-  const [formData, setFormData] = useState({
-    title: "Costume 2 pièces",
-    description: "Elégant. Parfait pour répondre aux issues.",
-    size: "L / 40",
-    color: "Rouge qui claque",
-    brand: "MARVEL",
-    city: "Paris Le Réacteur",
-    condition: "Propre",
-    price: 2,
-    trade: false,
-  });
+  const [formData, setFormData] = useState(seed_data); // DEMO
+
+  // Deal with the picture separately (usefull for preview)
   const [picture, setPicture] = useState(null);
+
+  // Message at one place only (and rely on browser required and type)
   const [errorMessage, setErrorMessage] = useState("");
 
   const handlePictureChange = (event) => {
@@ -34,7 +41,7 @@ const FormPublish = ({ token }) => {
     event.preventDefault();
     setErrorMessage("");
 
-    // It looks Axios is able to deal with a plain JS object
+    // It seems Axios is able to deal with a plain JS object
     // But let's make an epxlicit form-data object
     const formDataInst = new FormData();
     for (const [k, v] of Object.entries(formData)) {
@@ -57,10 +64,11 @@ const FormPublish = ({ token }) => {
           },
         }
       );
-      // console.log(result.data);
+
+      // TODO: consider redirect instead of navigate
       navigate(`/offer/${result.data._id}`);
     } catch (error) {
-      // console.error(error.response?.data.message);
+      // Deal with known errors or try to be helpful
       if (error.response?.status === 400) {
         setErrorMessage("Un titre, un prix et une image doivent être donnés");
       } else {

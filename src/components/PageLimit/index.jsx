@@ -2,11 +2,15 @@ import "./pageLimit.css";
 
 const PageLimit = ({ limit, setLimitAndPage }) => {
   const handleLimitChange = (event) => {
+    // Cast as Number or null
     const newLimit =
       event.target.value === "all" ? null : Number(event.target.value);
+    // Reset page to prevent inconsitencies
     setLimitAndPage(newLimit, 1);
   };
 
+  // Beware of type for value for select and control
+  // string for everything
   const value = limit ? limit.toString() : "all";
 
   return (

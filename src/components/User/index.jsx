@@ -1,6 +1,7 @@
 import "./user.css";
 
 const User = ({ user }) => {
+  // The wrapping div is used to deal with a fallback solution (colored disc)
   return (
     <div className="user-container">
       <div className="avatar">

@@ -1,6 +1,10 @@
+# Vinted Frontend
+
+My version.
+
 ## Features
 
-- decent css and responsiveness
+- decent css with attention for responsiveness and accessibilty (label/hover/focus)
 - fallback for missing avatars and consistent display
 - account for null filters :
   - for states
@@ -12,17 +16,24 @@
   - page navigation that depends on limit and actual page (only page / first / last page)
   - limit
 - page is checked, invalidated and corrected when limit is changed or when results' count changes !
-- safer useEffect to protect against concurrent fetching (I think that might happen, with very slow network or fast typing in the searchbar...)
+- safer useEffect to protect against concurrent fetching (I think that might happen, with very slow network and/or fast typing in the searchbar...)
+- heavy/verbose patterns to catch errors, silently (weird data) or explicitely (when fetching or submitting)
 
 ## TODO
+
+Add routes:
 
 - allow editing :
   - `axios.put`...
   - from the Offer route
-  - share the same form than publish... but no required attribute; and either send only the changes or pre-populate the form with current data (pb with picture)
+  - share the same form than publish... but no required attribute; and either send only the changes or pre-populate the form with current data (pb with picture) ?
 - allow deletion
-- but official backend allows destructive operations from any user...
-- disable searchBar...
+- but :
+
+  - official backend allows destructive operations from any authenticated user...
+  - implementation will be unefficient and confusing without leveraging other coding patterns
+
+- disable searchBar... (but it's not causing but it's a little )
 
 ### BIGGER CHANGES
 

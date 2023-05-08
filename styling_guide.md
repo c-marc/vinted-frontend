@@ -1,7 +1,16 @@
+# Styling Guide
+
+These are notes on how I analyzed the expected layout and style. And what I decided to go with.
+
 ## Fonts
 
-- Maison Neue (weight ?)
+- Maison Neue (weight: lower than regular ; ninja font says som custom "book" weight)
 - or Arial for CTA button
+- fs 12px is frequent and could be used as default
+
+## Border-radius
+
+- mostly 5px, sometimes 4 or 3
 
 ## General container
 
@@ -40,6 +49,7 @@
 - price: fs 24px (1.5rem)
 - desc: fs 14px (0.9rem)
 - avatar: h50px
+- details: 2 cols 50/50
 
 ## Auth Forms
 
@@ -56,9 +66,21 @@
   - padding: 25px;
   - border-bottom
   - 2 columns 50/50
+- submit is right bottom
+
+## Some decisions
+
+Border-radius:
+
+- fixed to 5 for consistency
+- except for Hero card that asks for sharper corners
+
+Font-size:
+
+- used a higher size in header
 
 ## Ressources for CSS Sliders
 
 - w3schools
-- on "smashing"
+- "smashing-mag"
 - [CSS for sliders](https://uxplanet.org/how-to-create-a-range-slider-using-html-css-6112fe9346e4)

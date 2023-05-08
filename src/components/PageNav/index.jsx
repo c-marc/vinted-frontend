@@ -5,6 +5,8 @@ import { getPageMax } from "../../utils/utils";
 import "./pageNav.css";
 
 const PageNav = ({ page, limit, count, setPage }) => {
+  // Input is allowed to skip to any page
+  // But this requires to control
   const pageMax = getPageMax(limit, count);
 
   const handlePageChange = (event) => {
@@ -17,6 +19,7 @@ const PageNav = ({ page, limit, count, setPage }) => {
     setPage(newPage);
   };
 
+  // And deal with nav appearance
   return (
     <div className="page-nav-container">
       <ChevronLeftIcon

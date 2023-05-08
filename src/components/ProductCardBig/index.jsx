@@ -5,18 +5,24 @@ import "./productCardBig.css";
 const ProductCardBig = ({ data }) => {
   const price = data.product_price;
 
+  // Cast details in a more comfortable data structure
+  // new structure is {key: "MARQUE", value: "X"}
   let details = data.product_details.map((detail) => {
-    // beware of empty objects sent by mischievous people
+    // Beware of empty objects sent by mischievous people
     if (Object.keys(detail).length !== 1) {
       return { key: null, value: null };
     }
     const [key, value] = Object.entries(detail)[0];
     return { key, value };
   });
+
+  // Get rid of null entries (corrupted data)
+  // "paiement" is not shown here
   details = details
     .filter((d) => d.key)
     .filter((d) => !/paiement/i.test(d.key));
 
+  // Just for readability of jsx
   const name = data.product_name;
   const description = data.product_description;
 

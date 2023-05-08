@@ -3,6 +3,7 @@ import User from "../User";
 import "./productCardSmall.css";
 
 const ProductCardSmall = ({ data }) => {
+  // Safely extract required data using magic
   let marque = null;
   let taille = null;
   data.product_details.forEach((el) => {
