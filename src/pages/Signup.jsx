@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const SignUp = ({ handleToken }) => {
@@ -17,6 +17,7 @@ const SignUp = ({ handleToken }) => {
   };
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,7 +32,12 @@ const SignUp = ({ handleToken }) => {
       if (result.data.token) {
         const token = result.data.token;
         handleToken(token);
-        navigate("/");
+        // redirect to first intention
+        if (location.state?.from) {
+          navigate(location.state.from);
+        } else {
+          navigate("/");
+        }
       } else {
         throw new Error("Missing token");
       }
@@ -42,7 +48,7 @@ const SignUp = ({ handleToken }) => {
       } else if (error.response?.data.message === "Missing parameters") {
         setErrorMessage("Tous les champs sont requis");
       } else {
-        setErrorMessage("L'inscription a échoué. Contactez-nous.");
+        setErrorMessage("Désolé, l'inscription a échoué. Contactez-nous.");
       }
     }
   };

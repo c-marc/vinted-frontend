@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = ({ handleToken }) => {
@@ -14,6 +14,7 @@ const Login = ({ handleToken }) => {
   };
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,7 +29,12 @@ const Login = ({ handleToken }) => {
       if (result.data.token) {
         const token = result.data.token;
         handleToken(token);
-        navigate("/");
+        // redirect to first intention
+        if (location.state?.from) {
+          navigate(location.state.from);
+        } else {
+          navigate("/");
+        }
       } else {
         throw new Error("Missing token");
       }
@@ -38,7 +44,7 @@ const Login = ({ handleToken }) => {
       if (error.response.status === 401 || error.response.status === 400) {
         setErrorMessage("email ou mot-de-passe incorrect");
       } else {
-        setErrorMessage("L'authentification a échoué. Contactez-nous.");
+        setErrorMessage("Désolé, l'authentification a échoué. Contactez-nous.");
       }
     }
   };

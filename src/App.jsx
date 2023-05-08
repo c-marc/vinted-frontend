@@ -51,7 +51,11 @@ function App() {
           <Route
             path="/offer/publish"
             element={
-              token ? <Publish token={token} /> : <Navigate to="/login" />
+              token ? (
+                <Publish token={token} />
+              ) : (
+                <Navigate to="/login" state={{ from: "/offer/publish" }} />
+              )
             }
           />
         </Routes>
