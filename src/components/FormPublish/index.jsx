@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -16,8 +16,13 @@ const FormPublish = ({ token }) => {
     price: 2,
     trade: false,
   });
-  const fileInput = useRef(undefined);
+  const [picture, setPicture] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const handlePictureChange = (event) => {
+    setPicture(event.target.files[0]);
+    // preview ?
+  };
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -29,13 +34,22 @@ const FormPublish = ({ token }) => {
     event.preventDefault();
     setErrorMessage("");
 
-    try {
-      // console.log(formData);
-      // console.log(fileInput.current.files[0]);
+    // It looks Axios is able to deal with a plain JS object
+    // But let's make an epxlicit form-data object
+    const formDataInst = new FormData();
+    for (const [k, v] of Object.entries(formData)) {
+      formDataInst.append(k, v);
+    }
+    formDataInst.append("picture", picture);
+    // Check
+    // for (const value of formDataInst.values()) {
+    //   console.log(value);
+    // }
 
+    try {
       const result = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
-        { ...formData, picture: fileInput.current.files[0] },
+        formDataInst,
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -46,10 +60,17 @@ const FormPublish = ({ token }) => {
       // console.log(result.data);
       navigate(`/offer/${result.data._id}`);
     } catch (error) {
-      // console.error(error.message);
-      console.error(error.response.data.message);
-      if (error.response.status) {
-        setErrorMessage("TODO: check API");
+      // console.error(error.response?.data.message);
+      if (error.response?.status === 400) {
+        setErrorMessage("Un titre, un prix et une image doivent être donnés");
+      } else {
+        setErrorMessage("Désolé, la publication a échoué. Contactez-nous");
+        // bonus
+        if (error.response?.data?.message) {
+          console.error(error.response.data.message);
+        } else {
+          console.error(error.message);
+        }
       }
     }
   };
@@ -68,9 +89,9 @@ const FormPublish = ({ token }) => {
             <input
               id="file"
               type="file"
+              accept=".png, .jpeg, .jpg"
               name="picture"
-              value={formData.picture}
-              ref={fileInput}
+              onChange={handlePictureChange}
               required
             />
           </div>

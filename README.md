@@ -1,10 +1,10 @@
-## Interesting features
+## Features
 
 - decent css and responsiveness
 - fallback for missing avatars
 - account for null filters :
   - for states
-  - for requests
+  - for requests (otherwise official backend is failing in some case)
   - in controls
 - custom crazy components for filters:
   - multistate button with sequential changes
@@ -12,10 +12,10 @@
   - page navigation that depends on limit and actual page (only page / first / last page)
   - limit
 - page is checked when limit is changed or when results' count changes !
+- safer useEffect protected against concurrent fetching
 
 ## TODO
 
-- check what kind of errors can throw the bachend for `post("/publish")`
 - redirect to publish after having been redirected to login:
   - `to` might be used with an object with the `path` and a `state` key that can be accessed with `location`.
   - there might be other patterns to do that.
