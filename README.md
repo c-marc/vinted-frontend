@@ -8,7 +8,7 @@
   - in controls
 - custom crazy components for filters:
   - multistate button with sequential changes
-  - paired sliders : mutually dependent and that can be null
+  - paired sliders : mutually dependent and can take null values
   - page navigation that depends on limit and actual page (only page / first / last page)
   - limit
 - page is checked when limit is changed or when results' count changes !

@@ -1,4 +1,5 @@
 .form-publish-container form {
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -26,7 +27,7 @@
 }
 
 .form-publish-container .checkbox {
-  margin-top: 40px;
+  margin-top: 20px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -58,10 +59,33 @@
   border-bottom: 1px solid var(--color-primary);
 }
 
-.form-publish-container input[type="file"] {
+/* file filedset */
+.form-publish-container fieldset.file {
+  padding: 15px;
+}
+
+.form-publish-container fieldset.file > div {
   height: 150px;
-  width: 100%;
-  text-align: center;
-  vertical-align: middle;
   border: 1px dashed grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-publish-container input[type="file"] {
+  display: none;
+}
+
+.form-publish-container label[for="file"] {
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  padding: 0.5em 1em;
+  border: 2px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-publish-container label[for="file"] > span:first-child {
+  font-size: 2rem;
 }

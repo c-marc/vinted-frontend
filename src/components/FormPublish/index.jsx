@@ -59,14 +59,21 @@ const FormPublish = ({ token }) => {
       <h1>Vends ton article</h1>
 
       <form onSubmit={handleSubmit}>
-        <fieldset>
-          <input
-            type="file"
-            name="picture"
-            value={formData.picture}
-            ref={fileInput}
-            required
-          />
+        <fieldset className="file">
+          <div>
+            <label htmlFor="file">
+              <span>+</span>
+              <span>Ajouter une photo</span>
+            </label>
+            <input
+              id="file"
+              type="file"
+              name="picture"
+              value={formData.picture}
+              ref={fileInput}
+              required
+            />
+          </div>
         </fieldset>
 
         <fieldset>
