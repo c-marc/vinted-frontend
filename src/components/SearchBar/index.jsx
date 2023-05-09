@@ -1,6 +1,6 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
-import "./SearchBar.css";
+import "./searchBar.css";
 
 const SearchBar = ({ search, setSearch }) => {
   return (
