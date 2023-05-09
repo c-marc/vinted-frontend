@@ -33,6 +33,7 @@ const SignUp = ({ handleToken }) => {
         const token = result.data.token;
         handleToken(token);
         // redirect to first intention
+        // consider using redirect instead of navigate
         if (location.state?.from) {
           navigate(location.state.from);
         } else {

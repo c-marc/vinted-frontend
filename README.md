@@ -6,18 +6,19 @@ My version.
 
 - decent css with attention for responsiveness and accessibilty (label/hover/focus)
 - fallback for missing avatars and consistent display
-- account for null filters :
+- account for `null` filters :
   - for states
   - for requests (otherwise official backend is failing in some case)
   - in controls
 - custom crazy components for filters:
   - multistate button with sequential changes
-  - paired sliders : mutually dependent and can take null values
+  - paired sliders : mutually dependent and can take `null` values
   - page navigation that depends on limit and actual page (only page / first / last page)
-  - limit
-- page is checked, invalidated and corrected when limit is changed or when results' count changes !
+  - limit results
+- page number is checked, invalidated and corrected when limit is changed or when results' count changes !
 - safer useEffect to protect against concurrent fetching (I think that might happen, with very slow network and/or fast typing in the searchbar...)
-- heavy/verbose patterns to catch errors, silently (weird data) or explicitely (when fetching or submitting)
+- catches as errors as possible, silently (weird data) or explicitly (when fetching or submitting) with helpful messages
+- some css deep-diving with range (see filters) and file inputs (see publish)
 
 ## TODO
 
@@ -31,9 +32,10 @@ Add routes:
 - but :
 
   - official backend allows destructive operations from any authenticated user...
-  - implementation will be unefficient and confusing without leveraging other coding patterns
+  - implementation might be unefficient and confusing without leveraging other coding patterns (token would have to be passed down on every route)
+  - ideas : provide auth via useContext
 
-- disable searchBar... (but it's not causing but it's a little )
+- disable searchBar... (it's not causing any trouble but it's a little bit weird to have it on other routes)
 
 ### BIGGER CHANGES
 
