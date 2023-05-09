@@ -97,7 +97,7 @@
   margin-right: 20px;
 }
 
-/* or just hijack the input */
+/* or just totally hijack the input */
 .form-publish-container input[type="file"] {
   display: none;
 }
@@ -109,7 +109,6 @@
   padding: 0.5em 1em;
   border: 2px solid var(--color-primary);
   cursor: pointer;
-  margin-right: 20px;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -117,4 +116,11 @@
 
 .form-publish-container .btn-file span:first-child {
   font-size: 1.5em;
+}
+
+/*  use same dimension than small cards img */
+.form-publish-container fieldset.file img {
+  height: 360px;
+  width: 235px;
+  object-fit: contain;
 }

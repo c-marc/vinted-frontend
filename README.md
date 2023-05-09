@@ -17,8 +17,9 @@ My version.
   - limit results
 - page number is checked, invalidated and corrected when limit is changed or when results' count changes !
 - safer useEffect to protect against concurrent fetching (I think that might happen, with very slow network and/or fast typing in the searchbar...)
-- catches as errors as possible, silently (weird data) or explicitly (when fetching or submitting) with helpful messages
-- some css deep-diving with range (see filters) and file inputs (see publish)
+- catches as many errors as possible, silently (weird data) or explicitly (when fetching or submitting) with helpful messages
+- some css deep-diving with range (see filters) and file inputs (see publish; EDIT overwritten)
+- leverage drag and drop native API for picture input
 
 ## TODO
 

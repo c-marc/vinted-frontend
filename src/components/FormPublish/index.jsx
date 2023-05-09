@@ -83,19 +83,43 @@ const FormPublish = ({ token }) => {
     }
   };
 
+  const handleDrop = (event) => {
+    event.preventDefault();
+
+    if (event.dataTransfer.items) {
+      const item = event.dataTransfer.items[0];
+      if (item.kind === "file") {
+        const file = item.getAsFile();
+        setPicture(file);
+      }
+    }
+  };
+
+  const handleDragOver = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="form-publish-container">
       <h1>Vends ton article</h1>
 
       <form onSubmit={handleSubmit}>
         <fieldset className="file">
-          <label htmlFor="file">
+          <label
+            htmlFor="file"
+            className="drop-zone"
+            onDrop={handleDrop}
+            onDragOver={handleDragOver}
+          >
             <span className="drop-title">Glissez et déposez un fichier</span>
             ou
             <p className="btn-file">
               <span>+</span>
               <span>Ajouter une photo</span>
             </p>
+            {picture && (
+              <img src={URL.createObjectURL(picture)} alt="preview" />
+            )}
             <input
               id="file"
               type="file"
