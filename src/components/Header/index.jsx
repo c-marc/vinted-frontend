@@ -1,9 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import "./header.css";
 
-import logo from "../../assets/img/logo.png";
+import { Link, useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar";
 
-import "./header.css";
+import logo from "../../assets/img/logo.png";
 
 const Header = ({ token, handleToken, search, setSearch }) => {
   const navigate = useNavigate();

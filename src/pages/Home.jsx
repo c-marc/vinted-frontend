@@ -29,8 +29,8 @@ const Home = ({ search, setSearch }) => {
           setData(result.data);
           setIsLoading(false);
 
-          // Refetch can make the page invalid
-          // This will trigger a new fetch
+          // Refetch can make the page number invalid
+          // This will trigger a new fetch but the experience should be better
           if (filters.page) {
             const pageMax = getPageMax(filters.limit, result.data.count);
             console.log(pageMax);
@@ -44,6 +44,8 @@ const Home = ({ search, setSearch }) => {
       }
     };
 
+    // Good practice: return a callback
+    // If useEffect is fetching, ignore the promise resolution
     let ignore = false;
     fetchData();
     return () => {

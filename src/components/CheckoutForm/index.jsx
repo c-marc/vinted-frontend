@@ -1,11 +1,14 @@
 import "./checkoutForm.css";
 
+import axios from "axios";
 import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-import axios from "axios";
-import { asPrice } from "../../utils/utils";
 import { Link } from "react-router-dom";
 
+// utils for pretty euros
+import { asPrice } from "../../utils/utils";
+
+// For readability
 const BACKEND_PAYMENT_URL =
   "https://lereacteur-vinted-api.herokuapp.com/payment";
 
@@ -100,7 +103,7 @@ const CheckoutForm = ({ token, title, price }) => {
         <form onSubmit={handleSubmit}>
           <CardElement />
           <hr />
-          <button type="submit" disabled={isLoading}>
+          <button type="submit" disabled={!stripe || !elements || isLoading}>
             Payer
           </button>
         </form>

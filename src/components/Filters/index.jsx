@@ -1,9 +1,10 @@
+import "./filters.css";
+
+// import components
 import SortButton from "../SortButton/SortButton";
 import DoubleSlider from "../DoubleSlider";
 import PageNav from "../PageNav";
 import PageLimit from "../PageLimit";
-
-import "./filters.css";
 
 const Filters = ({ filters, setFilters, count, setSearch }) => {
   const { sort, priceMin, priceMax, page, limit } = filters;

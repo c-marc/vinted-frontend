@@ -7,13 +7,13 @@ import ProductCardBig from "../components/ProductCardBig";
 const Offer = () => {
   const { id } = useParams();
 
-  const [data, setData] = useState({});
+  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const URL = "https://lereacteur-vinted-api.herokuapp.com/offer/" + id;
+        const URL = `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`;
         const result = await axios.get(URL);
         if (!ignore) {
           setData(result.data);
@@ -23,6 +23,8 @@ const Offer = () => {
         console.error(error.message);
       }
     };
+    // Good practice: return a callback
+    // If useEffect is fetching, ignore the promise resolution
     let ignore = false;
     fetchData();
     return () => {
@@ -30,7 +32,6 @@ const Offer = () => {
     };
   }, [id]);
 
-  console.log(data);
   return (
     <main className="offer-container">
       <div className="container">

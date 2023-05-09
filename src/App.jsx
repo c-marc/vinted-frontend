@@ -15,6 +15,7 @@ import Publish from "./pages/Publish";
 import Payment from "./pages/Payment";
 
 function App() {
+  // TODO: should store user ID as well for stripe operations...
   const [token, setToken] = useState(Cookies.get("tokenVinted"));
 
   const handleToken = (token) => {

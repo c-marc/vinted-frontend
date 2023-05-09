@@ -19,7 +19,7 @@ const ProductCardSmall = ({ data }) => {
       <img
         className="product-img"
         src={data.product_image.secure_url}
-        alt="TODO alt_product"
+        alt={`photo of ${data.product_name}`}
       />
       <div className="product-footer">
         <p className="price">{data.product_price} €</p>

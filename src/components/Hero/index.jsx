@@ -7,7 +7,7 @@ import tear from "../../assets/img/tear.svg";
 const Hero = () => {
   return (
     <div className="hero-container">
-      <img src={tear} alt="" />
+      <img src={tear} alt="just a clipping path" />
       <div className="container">
         <div className="hero-card">
           <h1>

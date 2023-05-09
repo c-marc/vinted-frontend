@@ -30,7 +30,7 @@ const Login = ({ handleToken }) => {
         const token = result.data.token;
         handleToken(token);
         // redirect to first intention
-        // consider using redirect instead of navigate
+        // consider using redirect instead of navigate?
         if (location.state?.from) {
           // forward state (useful when buying)
           const { from, ...newState } = location.state;

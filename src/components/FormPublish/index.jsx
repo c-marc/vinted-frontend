@@ -18,7 +18,7 @@ const seed_data = {
 };
 
 const FormPublish = ({ token }) => {
-  const [formData, setFormData] = useState(seed_data); // DEMO
+  const [formData, setFormData] = useState(seed_data); // DEMO (pre-fill)
 
   // Deal with the picture separately (usefull for preview)
   const [picture, setPicture] = useState(null);
@@ -28,7 +28,6 @@ const FormPublish = ({ token }) => {
 
   const handlePictureChange = (event) => {
     setPicture(event.target.files[0]);
-    // preview ?
   };
 
   const handleChange = (event) => {
@@ -65,6 +64,7 @@ const FormPublish = ({ token }) => {
         }
       );
 
+      // redirect to the offer
       // TODO: consider redirect instead of navigate
       navigate(`/offer/${result.data._id}`);
     } catch (error) {
@@ -83,10 +83,13 @@ const FormPublish = ({ token }) => {
     }
   };
 
+  // Native Drag and Drop API
   const handleDrop = (event) => {
     event.preventDefault();
 
+    // TODO: it's working but check if a fallback is required
     if (event.dataTransfer.items) {
+      // Just focus on the first file if multiple are dropped at once
       const item = event.dataTransfer.items[0];
       if (item.kind === "file") {
         const file = item.getAsFile();
@@ -118,7 +121,10 @@ const FormPublish = ({ token }) => {
               <span>Ajouter une photo</span>
             </p>
             {picture && (
-              <img src={URL.createObjectURL(picture)} alt="preview" />
+              <img
+                src={URL.createObjectURL(picture)}
+                alt="preview of new product"
+              />
             )}
             <input
               id="file"
