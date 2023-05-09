@@ -3,6 +3,17 @@
   background-size: cover;
   height: 450px;
   position: relative;
+  /* width: 100svw; */
+}
+
+.hero-container > img {
+  /* need to reset general rules and let intrinsic dimension do there job */
+  width: auto;
+  height: auto;
+  aspect-ratio: unset;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .hero-card {

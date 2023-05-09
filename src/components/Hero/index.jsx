@@ -1,10 +1,13 @@
+import "./hero.css";
+
 import { Link } from "react-router-dom";
 
-import "./hero.css";
+import tear from "../../assets/img/tear.svg";
 
 const Hero = () => {
   return (
     <div className="hero-container">
+      <img src={tear} alt="" />
       <div className="container">
         <div className="hero-card">
           <h1>
