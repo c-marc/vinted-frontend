@@ -89,11 +89,13 @@ const FormPublish = ({ token }) => {
 
       <form onSubmit={handleSubmit}>
         <fieldset className="file">
-          <div>
-            <label htmlFor="file">
+          <label htmlFor="file">
+            <span className="drop-title">Glissez et déposez un fichier</span>
+            ou
+            <p className="btn-file">
               <span>+</span>
               <span>Ajouter une photo</span>
-            </label>
+            </p>
             <input
               id="file"
               type="file"
@@ -102,7 +104,7 @@ const FormPublish = ({ token }) => {
               onChange={handlePictureChange}
               required
             />
-          </div>
+          </label>
         </fieldset>
 
         <fieldset>

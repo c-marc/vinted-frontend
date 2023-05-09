@@ -64,29 +64,57 @@
   padding: 15px;
 }
 
-.form-publish-container fieldset.file > div {
-  height: 150px;
+.form-publish-container fieldset.file label {
+  /* height: 150px; */
   border: 1px dashed grey;
+  padding: 30px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.form-publish-container input[type="file"] {
-  display: none;
-  /* TODO: deal with a preview */
+.form-publish-container fieldset.file label:hover {
+  background-color: #eee;
 }
 
-.form-publish-container label[for="file"] {
+.form-publish-container fieldset.file .drop-title {
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+
+/*  this is a reminder: it's "display: none" later */
+.form-publish-container input[type="file"]::file-selector-button {
   color: var(--color-primary);
+  background-color: white;
   font-size: 1.2rem;
   padding: 0.5em 1em;
   border: 2px solid var(--color-primary);
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  cursor: pointer;
+  margin-right: 20px;
 }
 
-.form-publish-container label[for="file"] > span:first-child {
-  font-size: 2rem;
+/* or just hijack the input */
+.form-publish-container input[type="file"] {
+  display: none;
+}
+
+.form-publish-container .btn-file {
+  color: var(--color-primary);
+  background-color: white;
+  font-size: 1.2rem;
+  padding: 0.5em 1em;
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.form-publish-container .btn-file span:first-child {
+  font-size: 1.5em;
 }

@@ -79,8 +79,15 @@ Font-size:
 
 - used a higher size in header
 
-## Ressources for CSS Sliders
+### Ressources
+
+For CSS Sliders:
 
 - w3schools
-- "smashing-mag"
+- "smashing-magazine" (need to search)
 - [CSS for sliders](https://uxplanet.org/how-to-create-a-range-slider-using-html-css-6112fe9346e4)
+
+For file input:
+
+- [MDN ::file-selector-button](https://developer.mozilla.org/en-US/docs/Web/CSS/::file-selector-button)
+- <https://nikitahl.com/custom-styled-input-type-file>
