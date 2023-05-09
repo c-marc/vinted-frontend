@@ -1,8 +1,11 @@
 import User from "../User";
+import { useNavigate } from "react-router-dom";
 
 import "./productCardBig.css";
 
 const ProductCardBig = ({ data }) => {
+  const navigate = useNavigate();
+
   const price = data.product_price;
 
   // Cast details in a more comfortable data structure
@@ -51,7 +54,14 @@ const ProductCardBig = ({ data }) => {
         <User user={data.owner} />
       </section>
 
-      <button className="btn btn-primary">Acheter</button>
+      <button
+        className="btn btn-primary"
+        onClick={() =>
+          navigate("/payment", { state: { title: name, price: price } })
+        }
+      >
+        Acheter
+      </button>
     </div>
   );
 };
