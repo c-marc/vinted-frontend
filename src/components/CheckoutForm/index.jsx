@@ -37,12 +37,12 @@ const CheckoutForm = ({ token, title, price }) => {
 
       const response = await axios.post(BACKEND_PAYMENT_URL, payload, {
         headers: {
-          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       });
 
-      console.log("ok", response.data);
+      console.log("Backend says it's ok", response.data);
+
       if (response.data.status === "succeeded") {
         setIsLoading(false);
         setCompleted(true);
