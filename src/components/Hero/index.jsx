@@ -12,7 +12,7 @@ const Hero = () => {
             <br />
             dans vos placards ?
           </h1>
-          <Link to="/publish">
+          <Link to="/offer/publish">
             <button className="btn btn-primary">Commencez à vendre</button>
           </Link>
         </div>

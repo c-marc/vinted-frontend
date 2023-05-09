@@ -1,0 +1,41 @@
+.checkout-form-container {
+  background-color: white;
+  max-width: 500px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.checkout-form-container h1 {
+  font-size: 1rem;
+  color: var(--color-grey-font);
+}
+
+.checkout-form-container .columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-form-container .bold {
+  font-weight: 401; /* this font-family is weird*/
+}
+
+.checkout-form-container button {
+  width: 100%;
+}
+
+.checkout-form-container button[type="submit"] {
+  --color: #00c06d;
+  background-color: var(--color);
+  border-color: 1px solid var(--color);
+  color: white;
+}
+
+.checkout-form-container p {
+  line-height: 25px;
+}
+
+.checkout-form-container p.center {
+  text-align: center;
+}

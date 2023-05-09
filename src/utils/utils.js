@@ -16,3 +16,8 @@ export const urlWithFilters = (url, filters) => {
 export const getPageMax = (limit, count) => {
   return !limit ? 1 : Math.floor(count / limit) + 1;
 };
+
+/** Display value as euros */
+export const asPrice = (value) => {
+  return value.toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
+};

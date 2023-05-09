@@ -15,7 +15,7 @@ const Payment = ({ token }) => {
   console.log("Payment route ok ?");
 
   return (
-    <>
+    <div className="payment-container">
       {!token ? (
         <Navigate to="/login" state={{ ...location.state, from: "/payment" }} />
       ) : (
@@ -27,7 +27,7 @@ const Payment = ({ token }) => {
           />
         </Elements>
       )}
-    </>
+    </div>
   );
 };
 
